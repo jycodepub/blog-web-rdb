@@ -1,0 +1,28 @@
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+  "author": "Jeff Yeh",
+  "content": "I do Java and Kotlin"
+}
+
+###
+POST http://localhost:8080/posts/1/comments
+Content-Type: application/json
+
+{
+  "author": "Jeff Yeh",
+  "content": "And nodejs toot"
+}
+
+###
+
+GET http://localhost:8080/posts/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/posts/1/comments
+Accept: application/json
+
+###

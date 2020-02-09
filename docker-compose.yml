@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  blog-mysql:
+    image: mysql:5
+    container_name: blog-mysql
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: jyDev_01
