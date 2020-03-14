@@ -7,3 +7,12 @@ services:
     - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: jyDev_01
+  blog-web:
+    build:
+      context: .
+      args:
+        version: $VERSION
+    image: blog-web:$VERSION
+    container_name: blog-web
+    ports:
+    - 8080:8080
