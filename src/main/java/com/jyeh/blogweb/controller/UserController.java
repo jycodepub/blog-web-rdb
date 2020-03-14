@@ -2,6 +2,8 @@ package com.jyeh.blogweb.controller;
 
 import com.jyeh.blogweb.domain.User;
 import com.jyeh.blogweb.repository.UserRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +19,13 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public void addUser(@RequestBody User user) {
+    public ResponseEntity<Response> addUser(@RequestBody User user) {
         userRepository.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                Response.builder().status(Response.Status.success)
+                        .message("User added. id=" + user.getUsername())
+                        .build()
+        );
     }
 
     @GetMapping("/users")

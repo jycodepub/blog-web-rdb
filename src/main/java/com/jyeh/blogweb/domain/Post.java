@@ -1,6 +1,7 @@
 package com.jyeh.blogweb.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +24,8 @@ public class Post {
     private String author;
     private String content;
     private LocalDateTime timestamp;
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "post")
+    @JsonIgnore
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, orphanRemoval = true, mappedBy = "post")
     private List<Comment> comments;
 
     public Post addComment(Comment comment) {
